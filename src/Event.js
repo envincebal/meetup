@@ -25,7 +25,9 @@ class Event extends Component {
         <p className="event-name">{event.name}</p>
         <p><span className="label">Group:</span> {event.group.name}</p>
         <p className="event-count"><span className="label">RSVP: </span>{event.yes_rsvp_count} people are going</p>
-        <p className="event-address"><span className="label">Address: </span>{ event.venue.address_1}, {event.venue.city}, {event.venue.localized_country_name}</p>
+        {event.venue &&
+          <p className="event-address"><span className="label">Address: </span>{ event.venue.address_1}, {event.venue.city}, {event.venue.localized_country_name}</p>
+        }
         <p className="event-venue"><span className="label">Venue: </span>{event.venue && event.venue.name}</p>
         {this.state.showDetails && (
           <div className="event-details">
