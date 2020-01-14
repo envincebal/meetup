@@ -1,6 +1,4 @@
-import {
-  mockEvents
-} from './mock-events';
+import {mockEvents} from './mock-events';
 import axios from "axios";
 
 async function getSuggestions(query) {
@@ -55,10 +53,6 @@ async function getEvents(lat, lon, page) {
     url += "&page=" + page;
   }
 
-  if (lat && lon && page) {
-    url += "&lat=" + lat + "&lon=" + lon + "&page=" + page;
-  }
-
   const result = await axios.get(url);
   return result.data.events;
   }
@@ -83,6 +77,8 @@ function getAccessToken() {
   if (accessToken && (Date.now() - lastSavedTime < 3600000)) {
     return accessToken
   }
+  const refreshToken = localStorage.getItem('refresh_token');
+  return getOrRenewAccessToken('renew', refreshToken);
 }
 
 async function getOrRenewAccessToken(type, key) {
@@ -103,5 +99,4 @@ async function getOrRenewAccessToken(type, key) {
   return tokenInfo.data.access_token;
 }
 
-export { getSuggestions, getEvents, 
-  getAccessToken }; 
+export { getSuggestions, getEvents}; 

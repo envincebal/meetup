@@ -43,6 +43,7 @@ class App extends Component {
         <CitySearch updateEvents={this.updateEvents}/>
         <NumberOfEvents updateEvents={this.updateEvents}/>
         <EventList events={this.state.events}/>
+        {console.log(this.state.events)}   
       </div>
     );
   }
