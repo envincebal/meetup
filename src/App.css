@@ -1,6 +1,9 @@
+@import url('https://fonts.googleapis.com/css?family=Lato:400,700&display=swap');
+
 .App {
   text-align: center;
   padding: 2% 5%;
+  font-family: 'Lato', sans-serif;
 }
 
 .App * {
@@ -68,6 +71,14 @@ input[type="number"] {
   border: 1px solid #ccc;
   border-radius: 4px;
   position: relative;
+}
+
+.event-name {
+  font-weight: 700;
+}
+
+.event-count {
+  font-style: italic;
 }
 
 .details-btn {

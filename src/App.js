@@ -3,29 +3,46 @@ import './App.css';
 import EventList from "./EventList";
 import NumberOfEvents from './NumberOfEvents';
 import CitySearch from "./CitySearch";
-import { getEvents } from './api';
+import {getEvents} from './api';
 
 class App extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
 
     this.state = {
-      events: []
+      events: [],
+      lat: null,
+      lon: null,
+      page: null
     }
   }
 
-
-  updateEvents = (lat, lon) => {
-    getEvents(lat, lon)
-      .then(events => this.setState({events}));
+  componentDidMount() {
+    this.updateEvents();
   }
 
-  render () {
+  updateEvents = (lat, lon, page) => {
+    if (lat && lon) {
+      getEvents(lat, lon, this.state.page).then(events => {
+        this.setState({events, lat, lon})
+      })
+    } else if (page) {
+      getEvents(this.state.lat, this.state.lon, page).then(events => {
+        this.setState({events, page})
+      })
+
+    } else {
+      getEvents(this.state.lat, this.state.lon, this.state.page).then(events => this.setState({events}));
+    }
+
+  }
+
+  render() {
     return (
       <div className="App">
-        <CitySearch updateEvents={this.updateEvents} />
-        <NumberOfEvents />
-        <EventList events={this.state.events} /> 
+        <CitySearch updateEvents={this.updateEvents}/>
+        <NumberOfEvents updateEvents={this.updateEvents}/>
+        <EventList events={this.state.events}/>
       </div>
     );
   }

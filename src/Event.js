@@ -21,7 +21,11 @@ class Event extends Component{
     const {event} = this.props;
     return (
       <div className="event">
-      <h2 className="event-name">{event.name}</h2>
+        <p>{event.local_time + " - " + event.local_date}</p>
+        <p className="event-name">{event.name}</p>
+        <p>{"Group: " + event.group.name}</p>
+        <p className="event-count">{event.yes_rsvp_count} people are going</p>
+        
         <div className="event-details">
 
         </div>
