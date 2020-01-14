@@ -2,7 +2,7 @@
 
 .App {
   text-align: center;
-  padding: 2% 5%;
+  padding: 2% 15%;
   font-family: 'Lato', sans-serif;
 }
 
@@ -35,7 +35,8 @@ input[type="number"] {
   width: 250px;
 }
 
-.city-search {
+.city-search,
+.number-of-events {
   display: flex;
   flex-direction: column;
 }
@@ -73,12 +74,22 @@ input[type="number"] {
   position: relative;
 }
 
-.event-name {
+.event-name,
+.label {
   font-weight: 700;
+}
+
+.event-name {
+  font-size: 24px;
 }
 
 .event-count {
   font-style: italic;
+}
+
+.event-link:link,
+.event-link:visited {
+  color: blue;
 }
 
 .details-btn {
@@ -112,4 +123,19 @@ input[type="number"] {
 
 .number-of-events {
   margin: 20px 0 50px;
+}
+
+.number{
+  text-align: right;
+  width: 100px;
+}
+
+@media only screen and (max-width: 700px) {
+  .App {
+    padding: 2% 5%;
+  }
+
+  .event-name{
+    font-size: 18px;
+  }
 }

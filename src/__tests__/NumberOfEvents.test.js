@@ -21,9 +21,6 @@ describe("<NumberOfEvents/> component", () => {
     expect(NumberOfEventsWrapper.find(".number").prop("value")).toBe(numberInput); 
   });
 
-  test("renders number of events label", () => {
-    expect(NumberOfEventsWrapper.find(".numbers-label")).toHaveLength(1);
-  });
 
   test("renders default number of events per page is 32", () => {
     expect(NumberOfEventsWrapper.state("numberInput")).toBe(32);
