@@ -68,12 +68,12 @@ describe("<Event /> component", () => {
   });
 
   test("test if show/hide button is rendered", () => {
-    expect(EventWrapper.find(".show-details")).toHaveLength(1);
-  });
+    expect(EventWrapper.find(".details-btn")).toHaveLength(1);
+  });  
 
   test("test if button click will show details", () => {
-    EventWrapper.find(".show-details").simulate("click");
+    EventWrapper.find(".details-btn").simulate("click");
     expect(EventWrapper.state("showDetails")).toBe(true);
-  })
+  });
 
-});
+}); 

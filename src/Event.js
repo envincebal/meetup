@@ -23,7 +23,7 @@ class Event extends Component {
       <div className="event">
         <p>{event.local_time + " - " + event.local_date}</p>
         <p className="event-name">{event.name}</p>
-        <p><span className="label">Group:</span> {event.group.name}</p>
+        <p><span className="label">Group:</span> {event.group && event.group.name}</p>
         <p className="event-count"><span className="label">RSVP: </span>{event.yes_rsvp_count} people are going</p>
         {event.venue &&
           <p className="event-address"><span className="label">Address: </span>{ event.venue.address_1}, {event.venue.city}, {event.venue.localized_country_name}</p>
@@ -34,12 +34,12 @@ class Event extends Component {
             <hr/>
             <p className="event-description" dangerouslySetInnerHTML={{__html: event.description}}></p>
             <a className="event-link" href={event.link}>Event Page</a>
-            <hr/>
+            <hr/> 
           </div>
         )}
-        <button onClick={this.handleShowDetails} className="show-details">Details</button>
+        <button onClick={this.handleShowDetails} className="details-btn">Details</button>
       </div>
-    );
+    ); 
   }
 }
 
