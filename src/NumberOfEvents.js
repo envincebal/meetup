@@ -17,11 +17,11 @@ class NumberOfEvents extends Component {
     this.setState({numberInput: number});
     this.props.updateEvents(null, null, number);
 
-    if (numberInput <= 0) {
+    if (numberInput <= 0 && number) {
       this.setState({
         infoText: "Number should be at least 1"
       });
-    }else if (numberInput > 32){
+    }else if (numberInput > 32 && number){
       this.setState({
         infoText: "Number should be 32 or less"
       });
