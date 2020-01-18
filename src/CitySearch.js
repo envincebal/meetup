@@ -1,5 +1,6 @@
-import React, {Component} from 'react';
-import { getSuggestions } from './api';
+import React, {Component} from "react";
+import { getSuggestions } from "./api";
+import {InfoAlert} from "./Alert";
 
 class CitySearch extends Component {
   constructor(props){
@@ -7,7 +8,8 @@ class CitySearch extends Component {
 
     this.state = {
       query: "",
-      suggestions: []
+      suggestions: [],
+      infoText: ""
     }
   }
 
@@ -16,7 +18,17 @@ class CitySearch extends Component {
     this.setState({query: value});
     getSuggestions(value)
     .then(suggestions =>{ 
-      this.setState({ suggestions })
+      this.setState({ suggestions });
+ 
+      if (value && suggestions.length === 0) {
+        this.setState({
+          infoText: "We can not find the city you are looking for. Please try another city"
+        });
+      } else {
+        this.setState({
+          infoText: ""
+        });
+      }
     });
   }
 
@@ -28,6 +40,7 @@ class CitySearch extends Component {
   render(){
     return (
       <div className="city-search">
+        <InfoAlert text={this.state.infoText} />
         <label>Search City</label>
         <input 
           type="text" 
