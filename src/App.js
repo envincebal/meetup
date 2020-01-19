@@ -21,11 +21,10 @@ class App extends Component {
 
   componentDidMount() {
     this.updateEvents();
-    window.addEventListener('online', this.offLineAlert());
   }
 
-  offLineAlert = () => {
-    if(navigator.onLine === false) {
+  updateEvents = (lat, lon, page) => {
+    if(!navigator.onLine) {
       this.setState({
         offlineText: 'You appear to be offline, this list is cached. Please connect to the internet for an updated list.'
       });
@@ -34,9 +33,7 @@ class App extends Component {
         offlineText: '',
       });
     }
-  }
 
-  updateEvents = (lat, lon, page) => {
     if (lat && lon) {
       getEvents(lat, lon, this.state.page).then(events => {
         this.setState({events, lat, lon})

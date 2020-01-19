@@ -37,13 +37,13 @@ async function getSuggestions(query) {
 
 async function getEvents(lat, lon, page) {
 
-  if (!navigator.onLine) {
-    const events = localStorage.getItem('lastEvents');
-    return JSON.parse(events);
-  }
-  
   if (window.location.href.startsWith('http://localhost')) {
     return mockEvents.events;
+  }
+
+    if (!navigator.onLine) {
+    const events = localStorage.getItem('lastEvents');
+    return JSON.parse(events);
   }
 
   const token = await getAccessToken();
