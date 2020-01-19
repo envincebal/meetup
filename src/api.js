@@ -28,7 +28,7 @@ async function getSuggestions(query) {
   const token = await getAccessToken();
 
   if(token){
-    const url = "https://cors-anywhere.herokuapp.com/https://api.meetup.com/find/locations?&sign=true&photo-host=public&query=" + query + "&access_token=" + token;
+    const url = "https://api.meetup.com/find/locations?&sign=true&photo-host=public&query=" + query + "&access_token=" + token;
     const result = await axios.get(url);
     return result.data;
   }
@@ -49,7 +49,7 @@ async function getEvents(lat, lon, page) {
   const token = await getAccessToken();
   
   if (token) {
-    let url = "https://cors-anywhere.herokuapp.com/https://api.meetup.com/find/upcoming_events?&sign=true&photo-host=public&access_token=" + token;
+    let url = "https://api.meetup.com/find/upcoming_events?&sign=true&photo-host=public&access_token=" + token;
 
   if (lat && lon){
     url += "&lat=" + lat + "&lon=" + lon;
@@ -79,7 +79,7 @@ function getAccessToken() {
     const code = searchParams.get("code");
 
     if (!code) {
-      window.location.href = "https://cors-anywhere.herokuapp.com/https://secure.meetup.com/oauth2/authorize?client_id=vg5u9rql438ddl39c9dls308rt&response_type=code&redirect_uri=https://envincebal.github.io/meetup/";
+      window.location.href = "https://secure.meetup.com/oauth2/authorize?client_id=vg5u9rql438ddl39c9dls308rt&response_type=code&redirect_uri=https://envincebal.github.io/meetup/";
       return null;
     }
     return getOrRenewAccessToken("get", code);
@@ -98,9 +98,9 @@ async function getOrRenewAccessToken(type, key) {
   let url;
 
   if (type === "get") {
-    url = "https://cors-anywhere.herokuapp.com/https://onx76mwsx0.execute-api.us-west-2.amazonaws.com/dev/api/token/" + key;
+    url = "https://onx76mwsx0.execute-api.us-west-2.amazonaws.com/dev/api/token/" + key;
   } else if (type === "renew") {
-    url = "https://cors-anywhere.herokuapp.com/https://onx76mwsx0.execute-api.us-west-2.amazonaws.com/dev/api/refresh/" + key;
+    url = "https://onx76mwsx0.execute-api.us-west-2.amazonaws.com/dev/api/refresh/" + key;
   }
 
   const tokenInfo = await axios.get(url);
