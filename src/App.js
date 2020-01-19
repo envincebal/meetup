@@ -4,7 +4,7 @@ import EventList from "./EventList";
 import NumberOfEvents from './NumberOfEvents';
 import CitySearch from "./CitySearch";
 import {getEvents} from './api';
-import {OfflineAlert} from './components/Alert';
+import {OfflineAlert} from './Alert';
 
 class App extends Component {
   constructor(props) {
