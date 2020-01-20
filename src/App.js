@@ -25,27 +25,28 @@ class App extends Component {
     this.updateEvents();
   }
 
-  countEventsOnDate = (date) => {
+  countEventsOnADate = (date) => {
     let count = 0;
     const {events} = this.state;
 
-    events.forEach(event => {
-      if (event.local_date === date){
-        count++;
+    for (let i = 0; i < events.length; i += 1) {
+      if (events[i].local_date === date) {
+        count += 1;
       }
-    });
+    }
     return count;
   }
 
   getData = () => {
-    const next7Days = [];
-    const currentDate = moment();
+    const next7Days = []; 
+    const currentDate = moment(); 
 
-    for (let i = 0; i < 7; i++) {
-      currentDate.add(1, "days");
-      const dateString = currentDate.format("YYYY-MM-DD");
-      const count = this.countEventsOnDate(dateString);
-      next7Days.push({ date: dateString, number: count });
+    for (let i = 0; i < 7; i += 1) {
+      currentDate.add(1, "days"); 
+      const dateString = currentDate.format("YYYY-MM-DD"); 
+
+      const count = this.countEventsOnADate(dateString);
+      next7Days.push({ date: dateString, number: count }); 
     }
     return next7Days;
   }
@@ -89,8 +90,8 @@ class App extends Component {
           >
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis type="category" dataKey="date" name="date" />
-            <YAxis type="number" dataKey="number" name="number of events" />
-            <Tooltip cursor={{ strokeDasharray: '3 3' }} />
+            <YAxis type="number" dataKey="number" name="number of events" allowDecimals={false} />
+            <Tooltip cursor={{ strokeDasharray: "3 3" }} />
             <Scatter data={this.getData()} fill="#8884d8" />
           </ScatterChart>
         </ResponsiveContainer>
