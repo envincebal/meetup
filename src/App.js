@@ -87,7 +87,7 @@ class App extends Component {
               top: 20, right: 20, bottom: 20, left: 20,
             }}
           >
-            <CartesianGrid />
+            <CartesianGrid strokeDasharray="3 3" />
             <XAxis type="category" dataKey="date" name="date" />
             <YAxis type="number" dataKey="number" name="number of events" />
             <Tooltip cursor={{ strokeDasharray: '3 3' }} />
