@@ -24,7 +24,7 @@ const mockEvents = {
       updated: 1563825339000,
       utc_offset: 7200000,
       waitlist_count: 79,
-      yes_rsvp_count: 80,
+      yes_rsvp_count: 40,
       venue: {
       id: 26266792,
       name: "adesso AG",
@@ -70,7 +70,7 @@ const mockEvents = {
       updated: 1563825339000,
       utc_offset: 7200000,
       waitlist_count: 79,
-      yes_rsvp_count: 80,
+      yes_rsvp_count: 10,
       venue: {
       id: 26266792,
       name: "adesso AG",
@@ -116,7 +116,7 @@ const mockEvents = {
       updated: 1563825339000,
       utc_offset: 7200000,
       waitlist_count: 79,
-      yes_rsvp_count: 80,
+      yes_rsvp_count: 10,
       venue: {
       id: 26266792,
       name: "adesso AG",
@@ -162,7 +162,7 @@ const mockEvents = {
       updated: 1563825339000,
       utc_offset: 7200000,
       waitlist_count: 79,
-      yes_rsvp_count: 80,
+      yes_rsvp_count: 10,
       venue: {
       id: 26266792,
       name: "adesso AG",
