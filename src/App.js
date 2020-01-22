@@ -7,6 +7,7 @@ import {getEvents} from "./api";
 import {OfflineAlert} from "./Alert";
 import moment from "moment";
 import {ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer} from "recharts";
+import {Tick} from "./CustomizedAxisTick";
 
 class App extends Component {
   constructor(props) {
@@ -78,18 +79,18 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <h1>Search for cool meetups in your city!</h1>
         <OfflineAlert text={this.state.offlineText} />
         <CitySearch updateEvents={this.updateEvents} />
         <NumberOfEvents updateEvents={this.updateEvents} />
         <ResponsiveContainer height={400}>
           <ScatterChart
-          width={800} height={250}
             margin={{
               top: 20, right: 20, bottom: 20, left: 20,
             }}
           >
             <CartesianGrid strokeDasharray="3 3" />
-            <XAxis type="category" dataKey="date" name="date" />
+            <XAxis type="category" dataKey="date" name="date" tick={<Tick/>} />
             <YAxis type="number" dataKey="number" name="number of events" allowDecimals={false} />
             <Tooltip cursor={{ stroke: "3 3" }} />
             <Scatter data={this.getData()} fill="#8884d8" />
