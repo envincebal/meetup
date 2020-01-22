@@ -44,7 +44,6 @@ class App extends Component {
     for (let i = 0; i < 7; i += 1) {
       currentDate.add(1, "days"); 
       const dateString = currentDate.format("YYYY-MM-DD"); 
-
       const count = this.countEventsOnADate(dateString);
       next7Days.push({ date: dateString, number: count }); 
     }
@@ -84,6 +83,7 @@ class App extends Component {
         <NumberOfEvents updateEvents={this.updateEvents} />
         <ResponsiveContainer height={400}>
           <ScatterChart
+          width={800} height={250}
             margin={{
               top: 20, right: 20, bottom: 20, left: 20,
             }}
@@ -91,7 +91,7 @@ class App extends Component {
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis type="category" dataKey="date" name="date" />
             <YAxis type="number" dataKey="number" name="number of events" allowDecimals={false} />
-            <Tooltip cursor={{ strokeDasharray: "3 3" }} />
+            <Tooltip cursor={{ stroke: "3 3" }} />
             <Scatter data={this.getData()} fill="#8884d8" />
           </ScatterChart>
         </ResponsiveContainer>

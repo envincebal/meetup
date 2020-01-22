@@ -27,7 +27,7 @@ async function getSuggestions(query) {
 
   const token = await getAccessToken();
 
-  if(token){
+  if (token) {
     const url = "https://api.meetup.com/find/locations?&sign=true&photo-host=public&query=" + query + "&access_token=" + token;
     const result = await axios.get(url);
     return result.data;
@@ -41,7 +41,7 @@ async function getEvents(lat, lon, page) {
     return mockEvents.events;
   }
 
-    if (!navigator.onLine) {
+  if (!navigator.onLine) {
     const events = localStorage.getItem('lastEvents');
     return JSON.parse(events);
   }
@@ -51,24 +51,23 @@ async function getEvents(lat, lon, page) {
   if (token) {
     let url = "https://api.meetup.com/find/upcoming_events?&sign=true&photo-host=public&access_token=" + token;
 
-  if (lat && lon){
-    url += "&lat=" + lat + "&lon=" + lon;
-  }
+    if (lat && lon){
+      url += "&lat=" + lat + "&lon=" + lon;
+    }
 
-  if (page) {
-    url += "&page=" + page;
-  }
+    if (page) {
+      url += "&page=" + page;
+    }
 
-  const result = await axios.get(url);
-  const events = result.data.events;
-  if (events.length) { // Check if the events exist
-    localStorage.setItem('lastEvents', JSON.stringify(events));
-  }
+    const result = await axios.get(url);
+    const events = result.data.events;
+    if (events.length) { // Check if the events exist
+      localStorage.setItem('lastEvents', JSON.stringify(events));
+    }
 
-  return events;
+    return events;
   }
-
-  
+  return [];
 }
 
 function getAccessToken() {

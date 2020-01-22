@@ -48,8 +48,7 @@ class Event extends Component {
             <hr/>
             {this.props.event.rsvp_limit ? (
               <ResponsiveContainer height={250}>
-              <PieChart isAnimationActive={false}width={200} height={200}>
-                {console.log(this.getEventData())}
+              <PieChart width={200} height={200}>
                 <Pie isAnimationActive={false} data={this.getEventData()} dataKey="value" cx="50%" cy="50%" outerRadius={80} label> 
                   { 
                     this.getEventData().map((entry, index) => (
